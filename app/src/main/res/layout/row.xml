@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:orientation="vertical"
+        android:id="@+id/task"
+        android:text="Task to do"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:textColor="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+        <!--android:layout_toRightOf="@+id/checkbox_delete"-->
+
+
+    <!--<CheckBox
+        android:id="@+id/checkbox_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:focusable="false"
+        android:focusableInTouchMode="false"/> -->
+
+</RelativeLayout>
+
+
+

@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">TODO</string>
+    <string-array name="task_suggestions">
+        <item>Go running</item>
+        <item>Make a sandwich</item>
+        <item>Go shopping</item>
+        <item>Listen to music</item>
+        <item>Finish homework</item>
+        <item>Play video games</item>
+        <item>Ask out chick</item>
+        <item>Pop some molly</item>
+        <item>Go sprinting</item>
+        <item>Fallout 4</item>
+        <item>Ask out two chicks</item>
+        <item>Pay the man</item>
+        <item>Lakers Game</item>
+        <item>Fall in Love</item>
+        <item>Visit New Orleans</item>
+        <item>Visit Chicago</item>
+    </string-array>
+</resources>
