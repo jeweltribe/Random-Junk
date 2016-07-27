@@ -6,7 +6,7 @@
         android:id="@+id/details"
         android:cursorVisible="true"
         android:gravity="top"
-        android:hint="Add details..."
+        android:hint="@string/AddDetails"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

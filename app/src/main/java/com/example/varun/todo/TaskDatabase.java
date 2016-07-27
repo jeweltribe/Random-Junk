@@ -14,10 +14,10 @@ import java.util.List;
 /**
  * Created by Varun on 3/31/2016.
  */
-public class TaskDatabase extends SQLiteOpenHelper {
+class TaskDatabase extends SQLiteOpenHelper {
 
     private static final String TABLE_NAME = "task";
-    private static final String COLUMN_TASK_ID = "taskid";
+    private static final String COLUMN_TASK_ID = "taskId";
     private static final String COLUMN_TASK_TEXT = "task";
     private static final String COLUMN_DETAIL_TEXT = "detail";
 
@@ -41,20 +41,26 @@ public class TaskDatabase extends SQLiteOpenHelper {
         db.delete(TABLE_NAME, null, null);
         int id = 0;
         for (Task t: todo) {
+            t.setTaskID(id);
             ContentValues values = new ContentValues();
             values.put(COLUMN_TASK_ID, id);
             values.put(COLUMN_TASK_TEXT, t.getTaskToDo());
             values.put(COLUMN_DETAIL_TEXT, t.getDetail());
-            db.insert(TABLE_NAME, null, values); // insert the ContentValue into the database
-
-            id++; // increment the database
+            db.insert(TABLE_NAME,null,values); // insert the ContentValue into the database
+            id++; // go to next entry in table
         }
 
         db.close(); // always close
     }
 
+   public void delete(String ID) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        database.delete(TABLE_NAME, COLUMN_TASK_ID + "=?",new String[] {ID} );
+    }
+
+
     public List<Task> getTD() {
-        List<Task> taskList = new ArrayList<>(); // pointless just pass the list as an argument
+        List<Task> taskList = new ArrayList<>(); // pointless just pass the list as an argument or just do you
         SQLiteDatabase db = getReadableDatabase();
         String sql = String.format("SELECT * from %s ORDER BY %s", TABLE_NAME, COLUMN_TASK_ID);
         Cursor cursor = db.rawQuery(sql, null);
@@ -64,7 +70,7 @@ public class TaskDatabase extends SQLiteOpenHelper {
                 String task = cursor.getString(2);
                 taskList.add(new Task(task, detail));
             }
-        } catch (SQLiteException e) { // catch some exception, don't know?
+        } catch (SQLiteException e) {
             Log.d("TODO","Exception", e);
         }
         cursor.close();

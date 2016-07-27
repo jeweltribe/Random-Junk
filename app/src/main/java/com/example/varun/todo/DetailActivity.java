@@ -8,12 +8,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * Created by Varun on 3/27/2016.
+ * Created by ${Varun} on ${3/27/2016}.
  */
 public class DetailActivity extends Activity {
 
-    EditText tDetails;
-    String detail;
+    private EditText tDetails;
+    private String detail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

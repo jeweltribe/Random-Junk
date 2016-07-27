@@ -18,4 +18,10 @@
         <item>Visit New Orleans</item>
         <item>Visit Chicago</item>
     </string-array>
+    <string name="AddDetails">Add Details </string>
+    <string name="TaskToDo">Task To Do</string>
+    <string name="Task">Task</string>
+    <string name="AddTask">Add Task</string>
+    <string name="Delete">Delete</string>
+    <string name="Cancel">Cancel</string>
 </resources>

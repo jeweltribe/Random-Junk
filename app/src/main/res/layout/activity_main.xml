@@ -16,7 +16,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:hint="task"
+        android:hint="@string/Task"
         android:background="#ffffff" />
 
     <Button
@@ -24,7 +24,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/taskFill"
-        android:text="Add Task"/>
+        android:text="@string/AddTask"/>
 
 
     <ListView
@@ -36,6 +36,8 @@
     </ListView>
 
     <LinearLayout
+        android:background="?android:attr/dividerVertical"
+        style="?android:attr/buttonBarStyle"
         android:id="@+id/decisions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,22 +46,24 @@
         android:layout_alignParentBottom="true">
 
         <Button
-            android:id="@+id/delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Delete"
-            android:layout_weight="1"
-            android:enabled="false"
-            android:visibility="gone"
-            android:focusable="true"/>
 
-
-        <Button
+            style="?android:attr/buttonBarButtonStyle"
             android:id="@+id/cancel_action"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cancel"
+            android:text="@string/Cancel"
             android:layout_weight="1"
+            android:visibility="gone"
+            android:focusable="true"/>
+
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Delete"
+            android:layout_weight="1"
+            android:enabled="false"
             android:visibility="gone"
             android:focusable="true"/>
 
