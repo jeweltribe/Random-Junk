@@ -68,13 +68,13 @@ public class MainActivity extends AppCompatActivity {
         taskList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (dcIsVisible) { //
+                if (dcIsVisible) { // if delete/cancel button are visible
                     delete.setEnabled(true);
-                    selectedViews.add(view); // save the view
+                    selectedViews.add(view); // save the view for deletion
                     selectedTasks.add(myTaskList.get(position));
                     view.setBackgroundColor(Color.MAGENTA);
                     taskAdapter.notifyDataSetChanged();
-                } else {
+                } else { //
                     N = position;
                     tempObject = myTaskList.get(position);
                     Intent i = new Intent(view.getContext(), DetailActivity.class);
@@ -86,14 +86,10 @@ public class MainActivity extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (View view: selectedViews) { // change the color back to the original color
-                    view.setBackgroundColor(Color.parseColor("#404040"));
-                }
-                delete.setVisibility(View.GONE);
-                cancel.setVisibility(View.GONE);
-                dcIsVisible = false; // delete and cancel buttons not visible
-                selectedViews.clear(); // make the two lists empty
-                selectedTasks.clear();
+                changeBackground(selectedViews);
+                modifyDC(delete, cancel);
+                dcIsVisible = false;
+                clearLists(selectedViews, selectedTasks);
 
             }
         });
@@ -106,23 +102,18 @@ public class MainActivity extends AppCompatActivity {
                     myTaskList.remove(t);
                     taskAdapter.notifyDataSetChanged();
                 }
-                for (View view: selectedViews) { // change color of view back to the original color
-                    view.setBackgroundColor(Color.parseColor("#404040"));
-                }
-                delete.setVisibility(View.GONE);
-                delete.setEnabled(false);
-                cancel.setVisibility(View.GONE);
+                changeBackground(selectedViews);
+                modifyDC(delete, cancel);
                 dcIsVisible = false;
-                if (selectedTasks.size() > 1) {
+                clearLists(selectedViews, selectedTasks);
+                if (selectedTasks.size() > 1) { // for multiple tasks add
                     message = "Task's Deleted";
                 }
-                selectedViews.clear(); // clear out the two lists
-                selectedTasks.clear();
                 Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
             }
         });
     }
-        // just for practice
+        // just for practice, implementing asynchronous task for database storing
         private class DbTasks extends AsyncTask<Void, Void, Void> {
             @Override
             protected Void doInBackground(Void... params) { // delete, retrieve, store
@@ -158,5 +149,23 @@ public class MainActivity extends AppCompatActivity {
                 default:
                     return super.onOptionsItemSelected(item);
             }
+        }
+
+        // Simple functions for basic tasks
+        public void clearLists(List<View> views, List<Task> tasks) {
+            views.clear();
+            tasks.clear();
+        }
+
+        public void changeBackground(List<View> views) {
+            for (View view: views) { // change color of view back to the original color
+                view.setBackgroundColor(Color.parseColor("#404040"));
+            }
+        }
+
+        public void modifyDC(Button delete, Button cancel) {
+            delete.setVisibility(View.GONE);
+            delete.setEnabled(false);
+            cancel.setVisibility(View.GONE);
         }
     }
